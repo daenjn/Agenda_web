@@ -1,0 +1,25 @@
+$def with (error)
+
+<h2>Agregar Nueva Persona</h2>
+
+$if error:
+    <div class="error">
+        <strong>Error:</strong> $error
+    </div>
+
+<form method="post" action="/insertar">
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="actions">
+        <button type="submit" class="btn btn-success">Agregar Persona</button>
+        <a href="/index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

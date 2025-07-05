@@ -1,0 +1,22 @@
+$def with (persona, mensaje)
+
+<h2>Detalle de Persona</h2>
+
+$if mensaje:
+    <div class="error">
+        <strong>Error:</strong> $mensaje
+    </div>
+
+$if persona:
+    <div class="detail-info">
+        <p><strong>ID:</strong> $persona['id_persona']</p>
+        <p><strong>Nombre:</strong> $persona['nombre']</p>
+        <p><strong>Email:</strong> $persona['email']</p>
+    </div>
+
+<div class="actions">
+    <a href="/index" class="btn">Regresar a la Lista</a>
+    $if persona:
+        <a href="/editar/$persona['id_persona']" class="btn btn-secondary">Editar</a>
+        <a href="/borrar/$persona['id_persona']" class="btn btn-danger">Borrar</a>
+</div>

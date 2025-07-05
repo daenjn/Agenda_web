@@ -1,0 +1,30 @@
+$def with (persona, mensaje)
+
+<h2>Confirmar Eliminación</h2>
+
+$if mensaje:
+    <div class="error">
+        <strong>Error:</strong> $mensaje
+    </div>
+
+$if persona:
+    <div class="error">
+        <strong>¿Está seguro que desea eliminar el siguiente registro?</strong>
+    </div>
+    
+    <div class="detail-info">
+        <p><strong>ID:</strong> $persona['id_persona']</p>
+        <p><strong>Nombre:</strong> $persona['nombre']</p>
+        <p><strong>Email:</strong> $persona['email']</p>
+    </div>
+    
+    <div class="actions">
+        <form method="post" action="/borrar/$persona['id_persona']" style="display: inline;">
+            <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+        </form>
+        <a href="/index" class="btn btn-secondary">Cancelar</a>
+    </div>
+$else:
+    <div class="actions">
+        <a href="/index" class="btn">Regresar a la Lista</a>
+    </div>

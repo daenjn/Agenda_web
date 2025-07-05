@@ -1,0 +1,43 @@
+$def with (personas, mensaje)
+
+<h2>Lista de Personas</h2>
+
+<div class="actions">
+    <a href="/insertar" class="btn btn-success">Agregar Nueva Persona</a>
+</div>
+
+$if mensaje:
+    <div class="info">
+        <strong>Información:</strong> $mensaje
+    </div>
+
+$if personas:
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            $for persona in personas:
+                <tr>
+                    <td>$persona['id_persona']</td>
+                    <td>$persona['nombre']</td>
+                    <td>$persona['email']</td>
+                    <td>
+                        <a href="/detalle/$persona['id_persona']" class="btn">Ver Detalle</a>
+                        <a href="/editar/$persona['id_persona']" class="btn btn-secondary">Editar</a>
+                        <a href="/borrar/$persona['id_persona']" class="btn btn-danger">Borrar</a>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+$else:
+    $if not mensaje:
+        <div class="info">
+            <strong>Información:</strong> No hay personas registradas. 
+            <a href="/insertar">Haga clic aquí para agregar la primera persona</a>.
+        </div>
